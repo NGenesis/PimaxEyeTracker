@@ -47,8 +47,7 @@ class LoadDLL {
 		static HMODULE GetThisDLL()
 		{
 			MEMORY_BASIC_INFORMATION info;
-			size_t len = VirtualQueryEx(GetCurrentProcess(), (void*)GetThisDLL, &info, sizeof(info));
-			return len ? (HMODULE)info.AllocationBase : NULL;
+			return VirtualQueryEx(GetCurrentProcess(), (void*)GetThisDLL, &info, sizeof(info)) ? (HMODULE)info.AllocationBase : nullptr;
 		}
 } static g_LoadDLL;
 
